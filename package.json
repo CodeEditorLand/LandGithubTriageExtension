@@ -1,5 +1,29 @@
 {
+	"name": "vscode-issue-triage-extension",
+	"version": "0.0.1",
+	"private": false,
 	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"build": "rollup -c",
+		"build-distro": "./build-distro.sh",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+	},
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "15.2.3",
 		"@rollup/plugin-typescript": "11.1.6",
@@ -14,12 +38,7 @@
 		"typescript": "5.4.2",
 		"typescript-esbuild": "0.4.5"
 	},
-	"main": "index.js",
-	"name": "vscode-issue-triage-extension",
-	"scripts": {
-		"build": "rollup -c",
-		"build-distro": "./build-distro.sh",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-	},
-	"type": "module"
+	"publishConfig": {
+		"access": "public"
+	}
 }
