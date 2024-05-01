@@ -1,33 +1,13 @@
 {
-	"name": "vscode-issue-triage-extension",
-	"version": "0.0.1",
-	"private": false,
-	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
-	"keywords": [
-		"land"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandGitHubTriageExtension#readme",
+	"author": {
+		"email": "Land@PlayForm.Cloud",
+		"name": "🌆 — Land —",
+		"url": "HTTPS://Land.PlayForm.Cloud"
+	},
 	"bugs": {
 		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandGitHubTriageExtension/issues"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/LandGitHubTriageExtension.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "🌆 — Land —",
-		"email": "Land@PlayForm.Cloud",
-		"url": "HTTPS://Land.PlayForm.Cloud"
-	},
-	"type": "module",
-	"main": "index.js",
-	"scripts": {
-		"Document": "Document 'Source/**/*.ts'",
-		"build": "rollup -c",
-		"build-distro": "./build-distro.sh",
-		"prepublishOnly": "Build 'Source/**/*.ts'"
-	},
+	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
 	"devDependencies": {
 		"@playform/build": "0.0.7",
 		"@playform/document": "0.0.6",
@@ -35,7 +15,27 @@
 		"chai": "5.1.0",
 		"tslib": "2.6.2"
 	},
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandGitHubTriageExtension#readme",
+	"keywords": [
+		"land"
+	],
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "index.js",
+	"name": "vscode-issue-triage-extension",
+	"private": false,
 	"publishConfig": {
 		"access": "public"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandGitHubTriageExtension.git"
+	},
+	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
+		"build": "rollup -c",
+		"build-distro": "./build-distro.sh",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
