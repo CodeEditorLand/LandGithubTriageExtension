@@ -3,40 +3,37 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandGitHubTriageExtension#readme",
 	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandGitHubTriageExtension/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandGitHubTriageExtension.git"
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
 		"build": "rollup -c",
 		"build-distro": "./build-distro.sh",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"devDependencies": {
-		"@rollup/plugin-node-resolve": "15.2.3",
-		"@rollup/plugin-typescript": "11.1.6",
-		"@types/chai": "4.3.13",
-		"@types/chrome": "0.0.263",
-		"@types/mocha": "10.0.6",
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6",
+		"@types/chai": "4.3.14",
 		"chai": "5.1.0",
-		"mocha": "10.3.0",
-		"rollup": "4.13.0",
-		"ts-node": "10.9.2",
-		"tslib": "2.6.2",
-		"typescript": "5.4.2",
-		"typescript-esbuild": "0.4.5"
+		"tslib": "2.6.2"
 	},
 	"publishConfig": {
 		"access": "public"
