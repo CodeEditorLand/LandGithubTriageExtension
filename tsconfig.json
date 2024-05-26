@@ -5,10 +5,6 @@
 		"module": "ES2015",
 		"moduleResolution": "node",
 		"noEmit": true,
-		"lib": [
-			"es2020",
-			"DOM",
-			"DOM.Iterable",
-		]
+		"lib": ["es2020", "DOM", "DOM.Iterable"]
 	}
 }
