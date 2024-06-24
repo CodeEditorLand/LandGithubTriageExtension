@@ -7,8 +7,8 @@
 		"build-distro": "./build-distro.sh"
 	},
 	"devDependencies": {
-		"@types/chai": "^4.2.11",
-		"chai": "^4.2.0",
-		"tslib": "^2.0.0"
+		"@types/chai": "^4.3.16",
+		"chai": "^5.1.1",
+		"tslib": "^2.6.3"
 	}
 }
