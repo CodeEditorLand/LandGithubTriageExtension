@@ -1,14 +1,14 @@
 {
-	"name": "vscode-issue-triage-extension",
 	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
-	"main": "index.js",
-	"scripts": {
-		"build": "rollup -c",
-		"build-distro": "./build-distro.sh"
-	},
 	"devDependencies": {
 		"@types/chai": "4.3.17",
 		"chai": "5.1.1",
 		"tslib": "2.6.3"
+	},
+	"main": "index.js",
+	"name": "vscode-issue-triage-extension",
+	"scripts": {
+		"build": "rollup -c",
+		"build-distro": "./build-distro.sh"
 	}
 }
