@@ -3,7 +3,7 @@
 	"devDependencies": {
 		"@types/chai": "4.3.17",
 		"chai": "5.1.1",
-		"tslib": "2.6.3"
+		"tslib": "2.7.0"
 	},
 	"main": "index.js",
 	"name": "vscode-issue-triage-extension",
