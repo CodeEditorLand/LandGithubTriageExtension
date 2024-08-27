@@ -16,7 +16,7 @@ and unzip it. Then, navigate to your extension configuration page
 There should be an option to "Load Unpacked". Select this, then choose the
 folder you unpacked earlier.
 
-## Usage
+## 🛠️ Usage
 
 Press Cmd+Shift+L to trigger the extension. This can be customized on your
 browser's extension configuration page under "Keyboard Shortcuts". (This was
