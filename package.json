@@ -1,9 +1,9 @@
 {
 	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
 	"devDependencies": {
-		"@types/chai": "^5.0.0",
-		"chai": "^5.1.1",
-		"tslib": "^2.7.0"
+		"@types/chai": "5.0.0",
+		"chai": "5.1.1",
+		"tslib": "2.7.0"
 	},
 	"main": "index.js",
 	"name": "vscode-issue-triage-extension",
