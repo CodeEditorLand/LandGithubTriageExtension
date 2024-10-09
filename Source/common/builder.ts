@@ -4,14 +4,22 @@
  *--------------------------------------------------------------------------------------------*/
 
 type Builder = {
-	<K extends keyof HTMLElementTagNameMap>(type: K, ...children: (string | HTMLElement)[]): HTMLElementTagNameMap[K]
-	(type: string, ...children: (string | HTMLElement)[]): HTMLElement
-}
+	<K extends keyof HTMLElementTagNameMap>(
+		type: K,
+		...children: (string | HTMLElement)[]
+	): HTMLElementTagNameMap[K];
+	(type: string, ...children: (string | HTMLElement)[]): HTMLElement;
+};
 
-export const $: Builder = (type: string, ...children: (string | HTMLElement)[]) => {
-	const el = document.createElement(type)
+export const $: Builder = (
+	type: string,
+	...children: (string | HTMLElement)[]
+) => {
+	const el = document.createElement(type);
 	for (const child of children) {
-		el.appendChild(typeof child === 'string' ? document.createTextNode(child) : child)
+		el.appendChild(
+			typeof child === "string" ? document.createTextNode(child) : child,
+		);
 	}
-	return el
-}
+	return el;
+};
