@@ -1,7 +1,7 @@
 {
 	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
 	"devDependencies": {
-		"@types/chai": "5.0.0",
+		"@types/chai": "5.0.1",
 		"chai": "5.1.2",
 		"tslib": "2.8.0"
 	},
