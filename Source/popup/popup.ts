@@ -55,7 +55,9 @@ const sendShortcutMessage = async (
 	preserve: boolean,
 ) => {
 	await sendMessage({ type: "shortcut", value: shortcut });
+
 	if (preserve) focusFilterText();
+
 	else window.close();
 };
 
@@ -65,6 +67,7 @@ const sendShortcutMessage = async (
  */
 const isLight = (color: string) => {
 	const rgb = /rgb\((\d*), (\d*), (\d*)\)/.exec(color);
+
 	if (rgb) {
 		return 0.2126 * +rgb[1] + 0.7152 * +rgb[2] + 0.0722 * +rgb[3] > 165; // SMPTE C, Rec. 709 weightings
 	}
@@ -80,10 +83,12 @@ const renderShortcuts = (
 
 		const categoryContainer = container.appendChild($("div"));
 		categoryContainer.append($("h2", category));
+
 		if (description) categoryContainer.append($("p", description));
 
 		for (const item of items) {
 			const labelButton = $("button", item.title);
+
 			if (item.color) {
 				labelButton.style.backgroundColor = item.color;
 				labelButton.style.color = isLight(item.color) ? "#000" : "#fff";
@@ -100,30 +105,39 @@ const renderShortcuts = (
 							focusFilterText,
 							event.metaKey,
 						);
+
 						break;
+
 					case "ArrowLeft":
 						(
 							labelButton.previousElementSibling as HTMLButtonElement
 						)?.focus();
+
 						break;
+
 					case "ArrowRight":
 						(
 							labelButton.nextElementSibling as HTMLButtonElement
 						)?.focus();
+
 						break;
+
 					case "ArrowUp":
 						(
 							categoryContainer.previousElementSibling?.querySelector(
 								"button",
 							) || rootContainer!.querySelector("input")
 						)?.focus();
+
 						break;
+
 					case "ArrowDown":
 						(
 							categoryContainer.nextElementSibling?.querySelector(
 								"button",
 							) || rootContainer!.querySelector("a")
 						)?.focus();
+
 						break;
 				}
 			});
@@ -138,7 +152,9 @@ const renderFilter = (
 	onSubmit: (preserve: boolean, focusFilterText: () => void) => void,
 ) => {
 	container.append("Filter: ");
+
 	const input = container.appendChild($("input"));
+
 	const focusFilterText = () => {
 		input.focus();
 		input.setSelectionRange(0, input.value.length);
@@ -158,6 +174,7 @@ const renderFilter = (
 
 const renderCommands = (container: HTMLElement, data: Shortcuts) => {
 	let filteredShortcuts: Shortcuts | undefined = undefined;
+
 	const onFilterChange = (filter: string, focusFilterText: () => void) => {
 		while (resultsContainer.firstChild) {
 			resultsContainer.removeChild(resultsContainer.firstChild);
@@ -165,6 +182,7 @@ const renderCommands = (container: HTMLElement, data: Shortcuts) => {
 		filteredShortcuts = fuzzySearchShortcuts(data, filter);
 		renderShortcuts(resultsContainer, filteredShortcuts, focusFilterText);
 	};
+
 	const onFilterSubmit = async (
 		preserve: boolean,
 		focusFilterText: () => void,
@@ -178,6 +196,7 @@ const renderCommands = (container: HTMLElement, data: Shortcuts) => {
 	};
 
 	const filterContainer = container.appendChild($("div"));
+
 	const resultsContainer = container.appendChild($("div"));
 	renderFilter(filterContainer, onFilterChange, onFilterSubmit);
 };
@@ -187,11 +206,13 @@ const linkButton = (title: string, onClick: () => void) => {
 	button.tabIndex = 0;
 	button.addEventListener("click", onClick);
 	button.addEventListener("keydown", (e) => e.key === "Enter" && onClick());
+
 	return button;
 };
 
 const renderScrapeButtons = (container: HTMLElement, hasData: boolean) => {
 	container.appendChild($("hr"));
+
 	if (hasData) {
 		container.appendChild(
 			linkButton("Refresh milestones", async () => {
@@ -254,7 +275,9 @@ sendMessage({ type: "init" })
 	.then(async (repo) => {
 		if (repo) {
 			const repoConfig = (await getConfig())[repo as string];
+
 			if (repoConfig) renderCommands(rootContainer, repoConfig);
+
 			else renderNoDataMessage(rootContainer);
 			renderScrapeButtons(rootContainer, !!repoConfig);
 		} else {

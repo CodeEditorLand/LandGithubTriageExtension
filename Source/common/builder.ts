@@ -16,6 +16,7 @@ export const $: Builder = (
 	...children: (string | HTMLElement)[]
 ) => {
 	const el = document.createElement(type);
+
 	for (const child of children) {
 		el.appendChild(
 			typeof child === "string" ? document.createTextNode(child) : child,

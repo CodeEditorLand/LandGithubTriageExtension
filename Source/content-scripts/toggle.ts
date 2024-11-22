@@ -13,6 +13,7 @@ const toggleMenu = async (
 ) => {
 	const menuButton = expectClickable(document.querySelector(menuSelector));
 	menuButton.click();
+
 	document.querySelectorAll(
 		'[data-filterable-for="assignee-filter-field"] .octocat-spinner',
 	);
@@ -24,6 +25,7 @@ const toggleMenu = async (
 			),
 		-1,
 	);
+
 	const itemButton = await awaitClickable(() => {
 		for (const item of document.querySelectorAll(itemsSelector)) {
 			if (item.textContent === target) {
@@ -31,8 +33,10 @@ const toggleMenu = async (
 			}
 		}
 	});
+
 	if (!itemButton) {
 		alert("Item not found");
+
 		return;
 	}
 	await delay(100);
@@ -66,6 +70,7 @@ export const addComment = async (text: string) => {
 	const field = expectDefined(
 		document.getElementById("new_comment_field"),
 	) as HTMLTextAreaElement;
+
 	const prior = field.value ?? "";
 	field.value = (prior ? `${prior}\n` : "") + text;
 	field.focus();

@@ -19,15 +19,22 @@ const runShortcut = async (shortcut: Shortcut) => {
 	switch (shortcut.type) {
 		case "assign":
 			await toggleAssignee(shortcut.value);
+
 			break;
+
 		case "comment":
 			await addComment(shortcut.value);
+
 			break;
+
 		case "label":
 			await toggleLabel(shortcut.value);
+
 			break;
+
 		case "milestone":
 			await toggleMilestone(shortcut.value);
+
 			break;
 	}
 };
@@ -37,16 +44,19 @@ chrome.runtime.onMessage.addListener(
 		switch (request.type) {
 			case "shortcut": {
 				await runShortcut(request.value);
+
 				break;
 			}
 			case "init": {
 				const currentRepo = getCurrentRepo();
 				console.log("got init request. responding", { currentRepo });
 				sendResponse(currentRepo);
+
 				break;
 			}
 			case "scrape":
 				await scrape(request.area);
+
 				break;
 		}
 	},

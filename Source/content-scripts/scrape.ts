@@ -47,17 +47,22 @@ export const scrape = async (area?: "milestone" | "assignee" | "label") => {
 	];
 
 	const config = await getConfig();
+
 	const currentRepo = getCurrentRepo();
+
 	if (config[currentRepo]) {
 		if (area) {
 			const newData = repoData.find((x) => x.items.length);
+
 			if (!newData) {
 				console.error("no items found");
 			} else {
 				const category = newData.category;
+
 				const existing = config[currentRepo].findIndex(
 					(x) => x.category === category,
 				);
+
 				if (existing !== -1) {
 					config[currentRepo][existing] = newData;
 				} else {
@@ -91,16 +96,19 @@ const scrapeMilestones = async () => {
 	);
 
 	const milestones: string[] = [];
+
 	document
 		.querySelector("#milestone-select-menu tab-container .select-menu-list")
 		?.querySelectorAll(".select-menu-item-heading")
 		.forEach((item) => {
 			const text: string = (item as any).innerText;
+
 			if (!text.includes("assign to new milestone"))
 				milestones.push(text);
 		});
 	milestoneButton.click();
 	await delay(200);
+
 	return milestones;
 };
 
@@ -115,7 +123,9 @@ const scrapeAssignees = async () => {
 				".sidebar-assignee .select-menu-item-heading",
 			)[0],
 	);
+
 	const assignees: { login: string; name: string }[] = [];
+
 	document
 		.querySelectorAll(".sidebar-assignee .select-menu-item-heading")
 		.forEach((item) => {
@@ -126,6 +136,7 @@ const scrapeAssignees = async () => {
 		});
 	assigneeButton.click();
 	await delay(200);
+
 	return assignees;
 };
 
@@ -140,7 +151,9 @@ const scrapeLabels = async () => {
 				".label-select-menu-item .select-menu-item-text",
 			)[0],
 	);
+
 	const labels: { label: string; color: string }[] = [];
+
 	document
 		.querySelectorAll(".label-select-menu-item .select-menu-item-text")
 		.forEach((item) => {
@@ -152,5 +165,6 @@ const scrapeLabels = async () => {
 		});
 	labelButton.click();
 	await delay(200);
+
 	return labels;
 };

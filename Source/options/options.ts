@@ -10,8 +10,10 @@ const save_options = async () => {
 	await setConfig(
 		JSON.parse((document.getElementById("edit-area") as any).value),
 	);
+
 	const status = document.getElementById("status")!;
 	status.textContent = "Saved.";
+
 	setTimeout(() => (status.textContent = ""), 750);
 };
 
@@ -24,8 +26,10 @@ const reset_options = async () => {
 	await setConfig(
 		JSON.parse((document.getElementById("edit-area") as any).value),
 	);
+
 	const status = document.getElementById("status")!;
 	status.textContent = "Reset.";
+
 	setTimeout(() => (status.textContent = ""), 750);
 };
 

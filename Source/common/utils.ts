@@ -10,6 +10,7 @@ export const delay = async (ms: number) =>
 
 export const error = (msg: string, ...args: any[]) => {
 	console.error("Args:", ...args);
+
 	throw new Error(msg);
 };
 

@@ -19,7 +19,9 @@ export const fuzzyMatchScore = (needle: string, haystack: string) => {
 		haystack_lower: haystack.toLowerCase(),
 		importantIndicies: haystack.split("").map((_, i, arr) => {
 			const prior = arr[i - 1];
+
 			const current = arr[i];
+
 			return (
 				prior === undefined ||
 				prior === " " ||
@@ -43,6 +45,7 @@ const doFuzzyMatchScore = (
 		haystack: string;
 		needle_lower: string;
 		haystack_lower: string;
+
 		importantIndicies: boolean[];
 	},
 	needleOffset: number,
@@ -56,6 +59,7 @@ const doFuzzyMatchScore = (
 	}
 
 	const options = [];
+
 	const matchBonus =
 		consecutive + (data.importantIndicies[haystackOffset] ? 1 : 0);
 

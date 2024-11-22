@@ -17,11 +17,14 @@ export const awaitClickable = async <T>(
 	tries = 25,
 ): Promise<(Clickable & T) | undefined> => {
 	if (tries === 0) return undefined;
+
 	const value: any = getter();
+
 	if (typeof value?.click === "function") {
 		return value as Clickable & T;
 	} else {
 		await delay(200);
+
 		return awaitClickable(getter, tries - 1);
 	}
 };
@@ -31,11 +34,14 @@ export const awaitFalsey = async (
 	tries = 25,
 ): Promise<void> => {
 	if (tries === 0) return;
+
 	const value = getter();
+
 	if (!value) {
 		return;
 	} else {
 		await delay(200);
+
 		return awaitClickable(getter, tries - 1);
 	}
 };
