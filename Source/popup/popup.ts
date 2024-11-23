@@ -57,7 +57,6 @@ const sendShortcutMessage = async (
 	await sendMessage({ type: "shortcut", value: shortcut });
 
 	if (preserve) focusFilterText();
-
 	else window.close();
 };
 
@@ -277,7 +276,6 @@ sendMessage({ type: "init" })
 			const repoConfig = (await getConfig())[repo as string];
 
 			if (repoConfig) renderCommands(rootContainer, repoConfig);
-
 			else renderNoDataMessage(rootContainer);
 			renderScrapeButtons(rootContainer, !!repoConfig);
 		} else {
