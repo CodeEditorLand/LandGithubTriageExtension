@@ -22,5 +22,6 @@ export const $: Builder = (
 			typeof child === "string" ? document.createTextNode(child) : child,
 		);
 	}
+
 	return el;
 };

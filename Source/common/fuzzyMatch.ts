@@ -41,9 +41,13 @@ export const fuzzyMatchScore = (needle: string, haystack: string) => {
 const doFuzzyMatchScore = (
 	data: {
 		memo: (number | undefined)[][][];
+
 		needle: string;
+
 		haystack: string;
+
 		needle_lower: string;
+
 		haystack_lower: string;
 
 		importantIndicies: boolean[];

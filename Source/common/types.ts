@@ -5,8 +5,11 @@
 
 export type Shortcut = {
 	title: string;
+
 	color?: string;
+
 	type: "label" | "comment" | "assign" | "milestone";
+
 	value: string;
 };
 
@@ -18,7 +21,9 @@ export type Message =
 
 export type Shortcuts = {
 	category: string;
+
 	description?: string;
+
 	items: Shortcut[];
 }[];
 

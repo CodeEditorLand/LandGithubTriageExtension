@@ -12,12 +12,15 @@ const toggleMenu = async (
 	target: string,
 ) => {
 	const menuButton = expectClickable(document.querySelector(menuSelector));
+
 	menuButton.click();
 
 	document.querySelectorAll(
 		'[data-filterable-for="assignee-filter-field"] .octocat-spinner',
 	);
+
 	await delay(100);
+
 	await awaitFalsey(
 		() =>
 			document.querySelector(
@@ -39,9 +42,13 @@ const toggleMenu = async (
 
 		return;
 	}
+
 	await delay(100);
+
 	itemButton.click();
+
 	await delay(100);
+
 	menuButton.click();
 };
 
@@ -72,12 +79,16 @@ export const addComment = async (text: string) => {
 	) as HTMLTextAreaElement;
 
 	const prior = field.value ?? "";
+
 	field.value = (prior ? `${prior}\n` : "") + text;
+
 	field.focus();
+
 	field.setSelectionRange(field.value.length, field.value.length);
 
 	const submitButton = expectDefined(
 		document.getElementById("partial-new-comment-form-actions"),
 	) as HTMLButtonElement;
+
 	submitButton.disabled = false;
 };

@@ -57,6 +57,7 @@ const sendShortcutMessage = async (
 	await sendMessage({ type: "shortcut", value: shortcut });
 
 	if (preserve) focusFilterText();
+
 	else window.close();
 };
 
@@ -81,6 +82,7 @@ const renderShortcuts = (
 		const { category, items, description } = shortcut;
 
 		const categoryContainer = container.appendChild($("div"));
+
 		categoryContainer.append($("h2", category));
 
 		if (description) categoryContainer.append($("p", description));
@@ -90,15 +92,19 @@ const renderShortcuts = (
 
 			if (item.color) {
 				labelButton.style.backgroundColor = item.color;
+
 				labelButton.style.color = isLight(item.color) ? "#000" : "#fff";
 			}
+
 			labelButton.addEventListener("click", (event) =>
 				sendShortcutMessage(item, () => {}, event.metaKey),
 			);
+
 			labelButton.addEventListener("keydown", async (event) => {
 				switch (event.key) {
 					case "Enter":
 						event.preventDefault();
+
 						await sendShortcutMessage(
 							item,
 							focusFilterText,
@@ -140,6 +146,7 @@ const renderShortcuts = (
 						break;
 				}
 			});
+
 			categoryContainer.append(labelButton);
 		}
 	}
@@ -156,13 +163,16 @@ const renderFilter = (
 
 	const focusFilterText = () => {
 		input.focus();
+
 		input.setSelectionRange(0, input.value.length);
 	};
 
 	setTimeout(() => input.focus(), 15);
+
 	input.addEventListener("keyup", () =>
 		onChange(input.value, focusFilterText),
 	);
+
 	input.addEventListener(
 		"keydown",
 		(e) => e.key === "Enter" && onSubmit(e.metaKey, focusFilterText),
@@ -178,7 +188,9 @@ const renderCommands = (container: HTMLElement, data: Shortcuts) => {
 		while (resultsContainer.firstChild) {
 			resultsContainer.removeChild(resultsContainer.firstChild);
 		}
+
 		filteredShortcuts = fuzzySearchShortcuts(data, filter);
+
 		renderShortcuts(resultsContainer, filteredShortcuts, focusFilterText);
 	};
 
@@ -187,6 +199,7 @@ const renderCommands = (container: HTMLElement, data: Shortcuts) => {
 		focusFilterText: () => void,
 	) => {
 		if (!filteredShortcuts) return;
+
 		await sendShortcutMessage(
 			filteredShortcuts[0].items[0],
 			focusFilterText,
@@ -197,13 +210,17 @@ const renderCommands = (container: HTMLElement, data: Shortcuts) => {
 	const filterContainer = container.appendChild($("div"));
 
 	const resultsContainer = container.appendChild($("div"));
+
 	renderFilter(filterContainer, onFilterChange, onFilterSubmit);
 };
 
 const linkButton = (title: string, onClick: () => void) => {
 	const button = $("a", title);
+
 	button.tabIndex = 0;
+
 	button.addEventListener("click", onClick);
+
 	button.addEventListener("keydown", (e) => e.key === "Enter" && onClick());
 
 	return button;
@@ -216,18 +233,23 @@ const renderScrapeButtons = (container: HTMLElement, hasData: boolean) => {
 		container.appendChild(
 			linkButton("Refresh milestones", async () => {
 				await sendMessage({ type: "scrape", area: "milestone" });
+
 				window.close();
 			}),
 		);
+
 		container.appendChild(
 			linkButton("Refresh labels", async () => {
 				await sendMessage({ type: "scrape", area: "label" });
+
 				window.close();
 			}),
 		);
+
 		container.appendChild(
 			linkButton("Refresh assignees", async () => {
 				await sendMessage({ type: "scrape", area: "assignee" });
+
 				window.close();
 			}),
 		);
@@ -235,6 +257,7 @@ const renderScrapeButtons = (container: HTMLElement, hasData: boolean) => {
 		container.appendChild(
 			linkButton("Load repo data", async () => {
 				await sendMessage({ type: "scrape" });
+
 				window.close();
 			}),
 		);
@@ -245,6 +268,7 @@ const renderOptionsLink = (container: HTMLElement) => {
 	container.appendChild(
 		linkButton("Settings", () => {
 			window.open(chrome.runtime.getURL("src/options/options.html"));
+
 			window.close();
 		}),
 	).id = "settings-link";
@@ -252,11 +276,13 @@ const renderOptionsLink = (container: HTMLElement) => {
 
 const renderNoDataMessage = (container: HTMLElement) => {
 	container.appendChild($("h2", "No data for this repo"));
+
 	container.appendChild($("p", "Use the `Load repo data` link to begin."));
 };
 
 const renderInactiveMessage = (container: HTMLElement) => {
 	container.appendChild($("h2", "This extension not active on this page."));
+
 	container.appendChild(
 		$(
 			"p",
@@ -276,11 +302,14 @@ sendMessage({ type: "init" })
 			const repoConfig = (await getConfig())[repo as string];
 
 			if (repoConfig) renderCommands(rootContainer, repoConfig);
+
 			else renderNoDataMessage(rootContainer);
+
 			renderScrapeButtons(rootContainer, !!repoConfig);
 		} else {
 			renderInactiveMessage(rootContainer);
 		}
+
 		renderOptionsLink(rootContainer);
 	})
 	.catch(alert);

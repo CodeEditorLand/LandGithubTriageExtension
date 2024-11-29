@@ -74,11 +74,14 @@ export const scrape = async (area?: "milestone" | "assignee" | "label") => {
 				"Data has been written to console. Use `Configure` in the extension popup to edit your existing configuration",
 			);
 		}
+
 		console.log(JSON.stringify(repoData, null, 2));
 	} else {
 		config[currentRepo] = repoData;
+
 		alert("Data has been imported. Open the extension popup to begin.");
 	}
+
 	await setConfig(config);
 };
 
@@ -86,6 +89,7 @@ const scrapeMilestones = async () => {
 	const milestoneButton = expectClickable(
 		document.querySelector("#milestone-select-menu summary"),
 	);
+
 	milestoneButton.click();
 
 	await awaitClickable(
@@ -106,7 +110,9 @@ const scrapeMilestones = async () => {
 			if (!text.includes("assign to new milestone"))
 				milestones.push(text);
 		});
+
 	milestoneButton.click();
+
 	await delay(200);
 
 	return milestones;
@@ -116,7 +122,9 @@ const scrapeAssignees = async () => {
 	const assigneeButton = expectClickable(
 		document.querySelector("#assignees-select-menu summary"),
 	);
+
 	assigneeButton.click();
+
 	await awaitClickable(
 		() =>
 			document.querySelectorAll(
@@ -134,7 +142,9 @@ const scrapeAssignees = async () => {
 				name: (item.querySelector(".js-description") as any).innerText,
 			});
 		});
+
 	assigneeButton.click();
+
 	await delay(200);
 
 	return assignees;
@@ -144,7 +154,9 @@ const scrapeLabels = async () => {
 	const labelButton = expectClickable(
 		document.querySelector("#labels-select-menu summary"),
 	);
+
 	labelButton.click();
+
 	await awaitClickable(
 		() =>
 			document.querySelectorAll(
@@ -163,7 +175,9 @@ const scrapeLabels = async () => {
 				color: (item.children[1] as any).style.backgroundColor,
 			});
 		});
+
 	labelButton.click();
+
 	await delay(200);
 
 	return labels;

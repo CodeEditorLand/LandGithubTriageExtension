@@ -47,13 +47,17 @@ chrome.runtime.onMessage.addListener(
 
 				break;
 			}
+
 			case "init": {
 				const currentRepo = getCurrentRepo();
+
 				console.log("got init request. responding", { currentRepo });
+
 				sendResponse(currentRepo);
 
 				break;
 			}
+
 			case "scrape":
 				await scrape(request.area);
 
