@@ -14,8 +14,8 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"@codeeditorland/plugin-node-resolve": "^7.1.3",
-		"@codeeditorland/plugin-typescript": "^4.1.2",
+		"@codeeditorland/plugin-node-resolve": "0.0.1",
+		"@codeeditorland/plugin-typescript": "0.0.1",
 		"@types/chai": "^4.2.11",
 		"@types/chrome": "0.0.112",
 		"@types/mocha": "^7.0.2",
