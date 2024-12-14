@@ -4,22 +4,27 @@
  *--------------------------------------------------------------------------------------------*/
 
 export type Shortcut = {
-	title: string
-	color?: string
-	type: 'label' | 'comment' | 'assign' | 'milestone'
-	value: string
-}
+	title: string;
+
+	color?: string;
+
+	type: "label" | "comment" | "assign" | "milestone";
+
+	value: string;
+};
 
 export type Message =
-	| { type: 'shortcut'; value: Shortcut }
-	| { type: 'init' }
-	| { type: 'log'; args: any }
-	| { type: 'scrape'; area?: 'milestone' | 'assignee' | 'label' }
+	| { type: "shortcut"; value: Shortcut }
+	| { type: "init" }
+	| { type: "log"; args: any }
+	| { type: "scrape"; area?: "milestone" | "assignee" | "label" };
 
 export type Shortcuts = {
-	category: string
-	description?: string
-	items: Shortcut[]
-}[]
+	category: string;
 
-export type Config = { [repo: string]: Shortcuts }
+	description?: string;
+
+	items: Shortcut[];
+}[];
+
+export type Config = { [repo: string]: Shortcuts };

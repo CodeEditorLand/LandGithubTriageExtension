@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "vscode-issue-triage-extension",
   "version": "0.2.1",
   "description": "A chromium extension to help with triaging VS Code GitHub issues.",
@@ -31,4 +32,21 @@
     "tslib": "2.0.0",
     "typescript": "3.9.2"
   }
+=======
+	"name": "@codeeditorland/issue-triage-extension",
+	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
+	"main": "index.js",
+	"scripts": {
+		"build": "rollup -c",
+		"build-distro": "./build-distro.sh"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@codeeditorland/plugin-node-resolve": "0.0.1",
+		"@codeeditorland/plugin-typescript": "0.0.1",
+		"@types/chai": "^4.2.11",
+		"chai": "^4.2.0",
+		"tslib": "^2.0.0"
+	}
+>>>>>>> f5e5c1822ffa769d5f6a8ebdaa60ad4d7fc29af3
 }
