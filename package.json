@@ -1,16 +1,10 @@
 {
 	"name": "@codeeditorland/issue-triage-extension",
-	"version": "0.2.1",
 	"description": "A chromium extension to help with triaging VS Code GitHub issues.",
-	"keywords": [],
-	"license": "MIT",
-	"author": "JacksonKearl (jakearl@microsoft.com)",
 	"main": "index.js",
 	"scripts": {
 		"build": "rollup -c",
-		"build-distro": "./build-distro.sh",
-		"lint": "eslint -c .eslintrc --fix --ext .ts .",
-		"test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha -r ts-node/register **/*.test.ts"
+		"build-distro": "./build-distro.sh"
 	},
 	"dependencies": {},
 	"devDependencies": {
