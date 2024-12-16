@@ -10,8 +10,8 @@
 	"devDependencies": {
 		"@codeeditorland/plugin-node-resolve": "0.0.1",
 		"@codeeditorland/plugin-typescript": "0.0.1",
-		"@types/chai": "^4.2.11",
-		"chai": "^4.2.0",
-		"tslib": "^2.0.0"
+		"@types/chai": "4.2.11",
+		"chai": "4.2.0",
+		"tslib": "2.0.0"
 	}
 }
